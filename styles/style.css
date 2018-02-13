@@ -8,5 +8,5 @@
 }
 
 .gameContainer > div{
-    position: relative;
+    position: absolute;
 }

@@ -22,7 +22,6 @@ class Shape{
 
         //Changement de la couleur de la div
         this.div.style.backgroundColor = color;
-        this.div.style.borderColor = color;
         
         //Positionnement de la <div>
         this.div.style.left = position.x + "px";
