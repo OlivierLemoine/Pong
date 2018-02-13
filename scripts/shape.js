@@ -33,8 +33,15 @@ class Shape{
 
         //Rotation de la <div>
         this.div.style.transform = "rotate(" + rotation + "deg)";
+
     }
 
+    getColor(){
+        return this.div.style.backgroundColor;
+    }
+    setColor(color){
+        this.div.style.backgroundColor = color;
+    }
     display(context){
         context.appendChild(this.div);
         return this;
