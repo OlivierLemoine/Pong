@@ -36,6 +36,15 @@ class Shape{
 
     }
 
+    getPosition(){
+        return {x: parseInt(this.div.style.left) ,y: parseInt(this.div.style.top)}
+    }
+
+    setPosition(position){
+        this.div.style.left = position.x + "px";
+        this.div.style.top = position.y + "px";
+    }
+
     getColor(){
         return this.div.style.backgroundColor;
     }
