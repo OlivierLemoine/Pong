@@ -7,45 +7,37 @@ class Shape{
             throw new Error("This class is abstract");
         }
 
+        if (   typeof(color) != "string"
+            || typeof(size.x) != "number"
+            || typeof(size.y) != "number"
+            || typeof(position.x) != "number"
+            || typeof(position.x) != "number"
+            || typeof(rotation) != "number"
+           ){
+            throw new Error("Wrong input arguments");
+        }
+
         //Creation de l'element HTML <div> qui affichera une forme
         this.div = document.createElement("div");
 
+        //Changement de la couleur de la div
         this.div.style.backgroundColor = color;
         this.div.style.borderColor = color;
         
-
-
-
-
-        gameDiv.appendChild(this.div);
-
-
-        this.color = color;
-        this.position = {
-            x: position.x,
-            y: position.y
-        };
-        this.size = {
-            x: size.x,
-            y: size.y
-        }
-        this.rotation = rotation;
-
+        //Positionnement de la <div>
+        this.div.style.left = position.x + "px";
+        this.div.style.top = position.y + "px";
         
-        this.div.style.position = "absolute";
-        
-        
+        //Taille de la <div>
+        this.div.style.width = size.x + "px";
+        this.div.style.height = size.y + "px";
+
+        //Rotation de la <div>
+        this.div.style.transform = "rotate(" + rotation + "deg)";
     }
 
-    updateCss(){
-        this.color;
-        this.div.style.width = this.size.x + "px";
-        this.div.style.height = this.size.y + "px";
-        this.div.style.left = this.position.x + "px";
-        this.div.style.top = this.position.y + "px";
-    }
-
-    move(){
-        throw new Error("This function is abstract");
+    display(context){
+        context.appendChild(this.div);
+        return this;
     }
 }
