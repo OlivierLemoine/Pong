@@ -23,4 +23,12 @@ class Triangle extends Mobile{
 
         return this;
     }
+
+    getColor(){
+        return this.div.style.borderBottomColor;
+    }
+
+    setColor(color){
+        this.div.style.borderBottomColor = color;
+    }
 }
