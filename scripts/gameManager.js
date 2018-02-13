@@ -1,3 +1,26 @@
+class GameManager{
+    constructor(){
+        this.walls = [];
+        this.mobiles = [];
+    }
+
+    execute(){
+        this.collision();
+        this.mobiles.forEach(m => {
+            m.move();
+        });
+    }
+
+    collision(){
+        var obj = this.walls.concat(this.mobiles);
+        for(var i = 0; i < obj.length; i++){
+            for(var j = i + 1; obj.length; j++){
+
+            }
+        }
+    }
+}
+
 // class gameManager{
 //     constructor(walls, ball){
 //         this.keys = {

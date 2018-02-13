@@ -1,13 +1,8 @@
-// class Wall extends Shape{
-//     constructor(color, size, position, rotation){
-//         super(color, size, position, rotation);
-//         this.score = 0;
-//     }
 
-//     move(x,y){
-//         this.position.x += x;
-//         this.position.y += y;
+//Heritage de Shape
+class Wall extends Shape{
+    constructor(color, size, position, rotation){
         
-//         this.updateCss();
-//     }
-// }
+        super(color, size, position, rotation);
+    }
+}

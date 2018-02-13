@@ -16,15 +16,10 @@ class Triangle extends Mobile{
 
     }
 
-    move(mvt){
-        if (   typeof(mvt.x) != "number"
-            || typeof(mvt.y) != "number"
-           ){
-            throw new Error("Wrong input arguments");
-        }
+    move(){
 
-        this.div.style.left = parseInt(this.div.style.left) + mvt.x + "px";
-        this.div.style.top = parseInt(this.div.style.top) + mvt.y + "px";
+        this.div.style.left = parseInt(this.div.style.left) + this.speed.x + "px";
+        this.div.style.top = parseInt(this.div.style.top) + this.speed.y + "px";
 
         return this;
     }
