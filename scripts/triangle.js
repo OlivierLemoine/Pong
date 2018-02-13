@@ -16,6 +16,15 @@ class Triangle extends Mobile{
 
     }
 
+    getColor()
+    {
+        return this.div.style.borderBottomColor;
+    }
+    setColor(color)
+    {
+        this.div.style.borderBottomColor = color;
+    }
+
     move(mvt){
         if (   typeof(mvt.x) != "number"
             || typeof(mvt.y) != "number"
