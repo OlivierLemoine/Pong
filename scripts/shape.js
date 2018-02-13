@@ -21,11 +21,10 @@ class Shape{
         this.div = document.createElement("div");
 
         //Changement de la couleur de la div
-        this.div.style.backgroundColor = color;
+        this.setColor(color);
         
         //Positionnement de la <div>
-        this.div.style.left = position.x + "px";
-        this.div.style.top = position.y + "px";
+        this.setPosition(position);
         
         //Taille de la <div>
         this.div.style.width = size.x + "px";

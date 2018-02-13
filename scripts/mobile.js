@@ -20,7 +20,22 @@ class Mobile extends Shape{
 
     }
 
-    move(){
-        throw new Error("This method is abstarct");
+    move(mvt){
+        let pos = this.getPosition();
+        
+        if(mvt == undefined){    
+            pos.x += this.speed.x;
+            pos.y += this.speed.y;
+        }
+        else{
+            pos.x += mvt.x;
+            pos.y += mvt.y;
+        }
+
+
+        
+        this.setPosition(pos);
+        
+        return this;
     }
 }

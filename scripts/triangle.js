@@ -16,14 +16,6 @@ class Triangle extends Mobile{
 
     }
 
-    move(){
-
-        this.div.style.left = parseInt(this.div.style.left) + this.speed.x + "px";
-        this.div.style.top = parseInt(this.div.style.top) + this.speed.y + "px";
-
-        return this;
-    }
-
     getColor(){
         return this.div.style.borderBottomColor;
     }

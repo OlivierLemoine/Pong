@@ -5,7 +5,7 @@ class Circle extends Mobile{
 
         super(color, {x: radius, y: radius}, position, rotation, speed);
 
-        this.div.className = "circle";
+        this.div.className = "rectangle";
 
     }
 }
