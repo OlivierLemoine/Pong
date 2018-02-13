@@ -27,8 +27,7 @@ class Shape{
         this.setPosition(position);
         
         //Taille de la <div>
-        this.div.style.width = size.x + "px";
-        this.div.style.height = size.y + "px";
+        this.setSize(size);
 
         //Rotation de la <div>
         this.div.style.transform = "rotate(" + rotation + "deg)";

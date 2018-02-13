@@ -14,10 +14,24 @@ class GameManager{
     collision(){
         var obj = this.walls.concat(this.mobiles);
         for(var i = 0; i < obj.length; i++){
-            for(var j = i + 1; obj.length; j++){
+            for(var j = i + 1; j < obj.length; j++){
 
             }
         }
+    }
+
+    addMobile(m){
+        this.mobiles = this.mobiles.concat(m);
+    }
+
+    launch(){
+        this.game = setInterval(() => {
+            this.execute();
+        }, 10);
+    }
+
+    stop(){
+        clearInterval(this.game);
     }
 }
 
