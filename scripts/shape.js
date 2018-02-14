@@ -32,8 +32,6 @@ class Shape{
         //Rotation de la <div>
         this.div.style.transform = "rotate(" + rotation + "deg)";
 
-        this.hitbox = [];
-
     }
 
     getSize(){
@@ -62,5 +60,13 @@ class Shape{
     display(context){
         context.appendChild(this.div);
         return this;
+    }
+
+    isInHitbox(points){
+        throw new Error("This Methode is abstract");
+    }
+    
+    getHitbox(){
+        throw new Error("This Methode is abstract");
     }
 }

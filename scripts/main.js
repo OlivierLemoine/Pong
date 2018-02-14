@@ -1,6 +1,6 @@
 var g = document.getElementsByClassName("gameContainer")[0];
 var gm = new GameManager();
-gm.addMobile(new Triangle("black", {x: 100, y: 100}, {x: 0, y: 0}, 0, {x: 1, y: 1}).display(g));
+gm.addMobile(new Rectangle("black", {x: 100, y: 100}).display(g));
 gm.launch();
 
 // var gameDiv = document.getElementById("game");
