@@ -32,6 +32,8 @@ class Shape{
         //Rotation de la <div>
         this.div.style.transform = "rotate(" + rotation + "deg)";
 
+        this.hitbox = [];
+
     }
 
     getSize(){
