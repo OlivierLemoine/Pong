@@ -69,6 +69,16 @@ class Shape{
         var tmp = this.div.style.transform.split("rotate(" + this.getRotation());
         this.div.style.transform = "rotate(" + rotation + tmp[1];
     }
+
+    getOrigin(){
+        let pos = this.getPosition();
+        let size = this.getSize();
+
+        return {
+            x: pos.x + size.x / 2,
+            y: pos.y + size.y / 2,
+        }
+    }
     
     display(context){
         context.appendChild(this.div);
