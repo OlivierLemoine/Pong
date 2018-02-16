@@ -23,14 +23,20 @@ class Wall extends Shape{
     }
 
     getHitbox(){
-        var pos = this.getPosition();
-        var size = this.getSize();
+        let pos = this.getPosition();
+        let size = this.getSize();
+        let rot = this.getRotation() + 45;
+        let origin = this.getOrigin();
 
-        return [
-            {x: pos.x, y: pos.y},
-            {x: pos.x + size.x, y: pos.y},
-            {x: pos.x + size.x, y: pos.y + size.y},
-            {x: pos.x, y: pos.y + size.y},
-        ]
+        rot = rot * 2 * Math.PI / 360;
+
+        let points =  [
+            {x: origin.x - Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y - Math.sin(rot) * Math.SQRT2 * size.y / 2},
+            {x: origin.x - Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y + Math.sin(rot) * Math.SQRT2 * size.y / 2},
+            {x: origin.x + Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y + Math.sin(rot) * Math.SQRT2 * size.y / 2},
+            {x: origin.x + Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y - Math.sin(rot) * Math.SQRT2 * size.y / 2},
+        ];
+
+        return points;
     }
 }
