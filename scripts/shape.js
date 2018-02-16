@@ -37,6 +37,7 @@ class Shape{
     getSize(){
         return {x: parseInt(this.div.style.width) ,y: parseInt(this.div.style.height)}
     }
+
     setSize(size){
         this.div.style.width = size.x + "px";
         this.div.style.height = size.y + "px";
@@ -54,19 +55,62 @@ class Shape{
     getColor(){
         return this.div.style.backgroundColor;
     }
+
     setColor(color){
         this.div.style.backgroundColor = color;
     }
+
+    getRotation(){
+        var tmp = this.div.style.transform.split("rotate(");
+        return parseFloat(tmp[1]);
+    }
+
+    setRotation(rotation){
+        var tmp = this.div.style.transform.split("rotate(" + this.getRotation());
+        this.div.style.transform = "rotate(" + rotation + tmp[1];
+    }
+    
     display(context){
         context.appendChild(this.div);
         return this;
     }
-
-    isInHitbox(points){
-        throw new Error("This Methode is abstract");
-    }
     
     getHitbox(){
         throw new Error("This Methode is abstract");
+    }
+
+    collideWith(shape){
+
+        let selfPoints = this.getHitbox();
+        let shapePoints = shape.getHitbox();
+        selfPoints = selfPoints.concat(selfPoints[0]);
+
+
+        for(let j = 0; j < shapePoints.length; j++){
+            let isInside = true;
+            for (let i = 0; i < selfPoints.length - 1; i++) {
+                
+                let d = {
+                    x: selfPoints[i + 1].x - selfPoints[i].x,
+                    y: selfPoints[i + 1].y - selfPoints[i].y
+                };
+
+                let t = {
+                    x: shapePoints[j].x - selfPoints[i].x,
+                    y: shapePoints[j].y - selfPoints[i].y
+                };
+
+                let side = d.y * t.x - d.x * t.y;
+                
+                if(side < 0){
+                    isInside = false;
+                    break;
+                }
+            }
+            if(isInside)
+                return true;
+        };
+
+        return false;
     }
 }
