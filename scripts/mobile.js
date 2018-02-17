@@ -38,4 +38,9 @@ class Mobile extends Shape{
         
         return this;
     }
+
+    addForce(f){
+        this.speed.x += f.x;
+        this.speed.y += f.y;
+    }
 }

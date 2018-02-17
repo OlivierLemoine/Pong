@@ -1,10 +1,24 @@
 var g = document.getElementsByClassName("gameContainer")[0];
 var gm = new GameManager((a, b) => {
-    //console.log(a, b);
+
+    let oA = a.getOrigin();
+    let oB = b.getOrigin();
+
+    let ABforce = {x: oB.x - oA.x, y: oB.y - oA.y};
+    let BAforce = {x: -ABforce.x, y: -ABforce.y};
+    if(a.addForce !== undefined)
+        a.addForce(ABforce);
+    if(b.addForce !== undefined)
+        b.addForce(BAforce);
+    // console.log(a, b);
 });
-gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 30, y: 35}, 30).display(g));
+gm.addStatic(new Wall("black", {x: 10, y: 500}, {x: 0, y: 10}).display(g));
+gm.addStatic(new Wall("black", {x: 500, y: 10}, {x: 0, y: 0}).display(g));
+gm.addStatic(new Wall("black", {x: 10, y: 500}, {x: 500, y: 0}).display(g));
+gm.addStatic(new Wall("black", {x: 500, y: 10}, {x: 10, y: 500}).display(g));
+gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 5, y: 5}, 0, {x: 0, y: 1}).display(g));
 // gm.addMobile(new Rectangle("black", {x: 100, y: 100}, {x: 50, y: 50}, 30).display(g));
-// gm.launch();
+gm.launch();
 
 // var gameDiv = document.getElementById("game");
 

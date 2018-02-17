@@ -1,6 +1,6 @@
 class GameManager{
     constructor(collisionHandler){
-        this.walls = [];
+        this.statics = [];
         this.mobiles = [];
         this.collisionHandler = collisionHandler;
     }
@@ -13,11 +13,11 @@ class GameManager{
     }
 
     collision(){
-        var obj = this.walls.concat(this.mobiles);
+        var obj = this.mobiles.concat(this.statics);
         for(var i = 0; i < obj.length; i++){
             for(var j = i + 1; j < obj.length; j++){
-                if(!obj[i].collideWith(obj[j].getHitbox()))
-                    if(obj[j].collideWith(obj[i].getHitbox()))
+                if(!obj[i].collideWith(obj[j]))
+                    if(obj[j].collideWith(obj[i]))
                         if(this.collisionHandler !== undefined)
                             this.collisionHandler(obj[i], obj[j]);
                     else
@@ -26,6 +26,10 @@ class GameManager{
 
             }
         }
+    }
+
+    addStatic(s){
+        this.statics = this.statics.concat(s);
     }
 
     addMobile(m){
