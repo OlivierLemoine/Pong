@@ -1,6 +1,10 @@
 var g = document.getElementsByClassName("gameContainer")[0];
 var gm = new GameManager((a, b) => {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 34f5bf830a10e548de3475e0ab5968c6463a8a2d
     //console.log(a, b);
 });
 gm.addMobile(new Rectangle("green", {x: 500, y: 10}, {x: 0, y: 0}, 45).display(g));
