@@ -1,13 +1,9 @@
 var g = document.getElementsByClassName("gameContainer")[0];
 var gm = new GameManager((a, b) => {
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 34f5bf830a10e548de3475e0ab5968c6463a8a2d
     //console.log(a, b);
 });
-gm.addMobile(new Rectangle("green", {x: 500, y: 10}, {x: 0, y: 0}, 45).display(g));
+gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 50, y: 50}, 45).display(g));
+console.log(gm.mobiles[0].getHitbox());
 // gm.addMobile(new Rectangle("black", {x: 100, y: 100}, {x: 50, y: 50}, 30).display(g));
 // gm.launch();
 
