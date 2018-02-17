@@ -2,8 +2,7 @@ var g = document.getElementsByClassName("gameContainer")[0];
 var gm = new GameManager((a, b) => {
     //console.log(a, b);
 });
-gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 50, y: 50}, 45).display(g));
-console.log(gm.mobiles[0].getHitbox());
+gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 30, y: 35}, 30).display(g));
 // gm.addMobile(new Rectangle("black", {x: 100, y: 100}, {x: 50, y: 50}, 30).display(g));
 // gm.launch();
 

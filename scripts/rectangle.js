@@ -16,19 +16,21 @@ class Rectangle extends Mobile{
 
         rot = rot * 2 * Math.PI / 360;
 
-        let points =  [
-            {x: origin.x - size.x / 2, y: origin.y - size.y / 2},
-            {x: origin.x - size.x / 2, y: origin.y + size.y / 2},
-            {x: origin.x + size.x / 2, y: origin.y + size.y / 2},
-            {x: origin.x + size.x / 2, y: origin.y - size.y / 2},
+        let points = [
+            {x: - size.x / 2, y: - size.y / 2},
+            {x: - size.x / 2, y: + size.y / 2},
+            {x: + size.x / 2, y: + size.y / 2},
+            {x: + size.x / 2, y: - size.y / 2},
         ];
 
+        // return points;
+
         for (let i = 0; i < points.length; i++) {
-            let tmp = cartesianToCircular(point);
+            let tmp = cartesianToCircular(points[i]);
             tmp.t += rot;
-            point = circularToCartesian(tmp);
-            point.x += origin.x;
-            point.y += origin.y;
+            points[i] = circularToCartesian(tmp);
+            points[i].x += origin.x;
+            points[i].y += origin.y;
         }
 
         return points;
