@@ -23,8 +23,6 @@ class Rectangle extends Mobile{
             {x: + size.x / 2, y: - size.y / 2},
         ];
 
-        // return points;
-
         for (let i = 0; i < points.length; i++) {
             let tmp = cartesianToCircular(points[i]);
             tmp.t += rot;
