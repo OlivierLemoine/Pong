@@ -26,14 +26,18 @@ class Circle extends Mobile{
     }
 
     getHitbox(){
-        var pos = this.getPosition();
-        var size = this.getSize();
+        var center = this.getPosition();
+        var radius = this.getSize().x/2;
+        center = {x:(center.x+radius),y:(center.y+radius)};
+        var hitBox = [];
+        var p = 4;
+        var ang = 2*Math.PI/p;
+        while(p > 0)
+        {
+            hitBox.push({x: center.x+radius*Math.cos(p*ang), y: center.y+radius*Math.sin(p*ang)});
+            p -= 1;
+        }
 
-        return [
-            {x: pos.x, y: pos.y},
-            {x: pos.x + size.x, y: pos.y},
-            {x: pos.x + size.x, y: pos.y + size.y},
-            {x: pos.x, y: pos.y + size.y},
-        ]
+        return hitBox
     }
 }

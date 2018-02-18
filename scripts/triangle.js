@@ -73,22 +73,4 @@ class Triangle extends Mobile{
             {x: pos.x + (size.x / 2), y: pos.y},
         ]
     }
-
-    getHitbox(){
-        let pos = this.getPosition();
-        let size = this.getSize();
-        let rot = this.getRotation() + 45;
-        let origin = this.getOrigin();
-
-        rot = rot * 2 * Math.PI / 360;
-
-        let points =  [
-            {x: origin.x - Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y - Math.sin(rot) * Math.SQRT2 * size.y / 2},
-            {x: origin.x - Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y + Math.sin(rot) * Math.SQRT2 * size.y / 2},
-            {x: origin.x + Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y + Math.sin(rot) * Math.SQRT2 * size.y / 2},
-            {x: origin.x + Math.cos(rot) * Math.SQRT2 * size.x / 2, y: origin.y - Math.sin(rot) * Math.SQRT2 * size.y / 2},
-        ];
-
-        return points;
-    }
 }
