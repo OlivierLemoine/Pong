@@ -1,22 +1,29 @@
 var g = document.getElementsByClassName("gameContainer")[0];
-var gm = new GameManager((a, b) => {
+var gm = new GameManager((a, b, pos) => {
 
     let oA = a.getOrigin();
     let oB = b.getOrigin();
 
-    let ABforce = {x: oB.x - oA.x, y: oB.y - oA.y};
-    let BAforce = {x: -ABforce.x, y: -ABforce.y};
-    if(a.addForce !== undefined)
-        a.addForce(ABforce);
-    if(b.addForce !== undefined)
-        b.addForce(BAforce);
-    // console.log(a, b);
+    let vect = {x: oB.x - oA.x, y: oB.y - oA.y};
+
+    vect.x /= magnitude(vect);
+    vect.y /= magnitude(vect);
+
+    if(b.speed !== undefined){
+        b.speed.x *= vect.x;
+        b.speed.y *= vect.y;
+    }
+
+    if(a.speed !== undefined){
+        a.speed.x *= vect.x;
+        a.speed.y *= vect.y;
+    }
 });
-gm.addStatic(new Wall("black", {x: 10, y: 500}, {x: 0, y: 10}).display(g));
-gm.addStatic(new Wall("black", {x: 500, y: 10}, {x: 0, y: 0}).display(g));
-gm.addStatic(new Wall("black", {x: 10, y: 500}, {x: 500, y: 0}).display(g));
-gm.addStatic(new Wall("black", {x: 500, y: 10}, {x: 10, y: 500}).display(g));
-gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 5, y: 5}, 0, {x: 0, y: 1}).display(g));
+gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 0, y: 0}).display(g));
+gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 0}).display(g));
+gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 1000, y: 0}).display(g));
+gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 1000}).display(g));
+gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 100, y: 100}, 0, {x: 3, y: 2}).display(g));
 // gm.addMobile(new Rectangle("black", {x: 100, y: 100}, {x: 50, y: 50}, 30).display(g));
 gm.launch();
 

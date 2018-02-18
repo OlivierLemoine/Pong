@@ -118,9 +118,9 @@ class Shape{
                 }
             }
             if(isInside)
-                return true;
+                return {res: true ,pos: shapePoints[j]};
         };
 
-        return false;
+        return {res: false};
     }
 }

@@ -14,15 +14,19 @@ class GameManager{
 
     collision(){
         var obj = this.mobiles.concat(this.statics);
-        for(var i = 0; i < obj.length; i++){
+        for(var i = 0; i < this.mobiles.length; i++){
             for(var j = i + 1; j < obj.length; j++){
-                if(!obj[i].collideWith(obj[j]))
-                    if(obj[j].collideWith(obj[i]))
+
+                let c1 = obj[i].collideWith(obj[j]);
+
+                if(!c1.res){
+                    let c2 = obj[j].collideWith(obj[i]);
+                    if(c2.res)
                         if(this.collisionHandler !== undefined)
-                            this.collisionHandler(obj[i], obj[j]);
-                    else
-                        if(this.collisionHandler !== undefined)
-                            this.collisionHandler(obj[i], obj[j]);
+                            this.collisionHandler(obj[j], obj[i], c2.pos);
+                }
+                else if(this.collisionHandler !== undefined)
+                    this.collisionHandler(obj[i], obj[j], c1.pos);
 
             }
         }
@@ -39,7 +43,7 @@ class GameManager{
     launch(){
         this.game = setInterval(() => {
             this.execute();
-        }, 10);
+        }, 1);
     }
 
     stop(){

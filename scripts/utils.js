@@ -1,5 +1,5 @@
 function cartesianToCircular(point){
-    let rho = Math.sqrt(point.x * point.x + point.y * point.y);
+    let rho = magnitude(point);
     let theta = Math.atan2(point.y, point.x);
 
     return {r: rho, t: theta};
@@ -12,3 +12,11 @@ function circularToCartesian(point){
 
     return {x: x, y: y};
 };
+
+function magnitude(vec){
+    return Math.sqrt(magnitudeSQ(vec));
+}
+
+function magnitudeSQ(vec){
+    return vec.x * vec.x + vec.y * vec.y
+}
