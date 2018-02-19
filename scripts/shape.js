@@ -16,9 +16,7 @@ class Shape{
            ){
             throw new Error("Wrong input arguments");
 
-            this.hitbox = updateHitbox();
-        }
-
+        }        
         //Creation de l'element HTML <div> qui affichera une forme
         this.div = document.createElement("div");
 
@@ -89,6 +87,10 @@ class Shape{
     }
     
     getHitbox(){
+
+        if(this.hitbox === undefined)
+            this.hitbox = this.updateHitbox();
+
         origin = this.getOrigin();
         let hitbox = Object.assign([], this.hitbox);
         for (let i = 0; i < hitbox.length; i++) {
