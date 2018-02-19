@@ -94,10 +94,12 @@ class Shape{
             this.hitbox = this.updateHitbox();
 
         origin = this.getOrigin();
-        let hitbox = Object.assign([], this.hitbox);
-        for (let i = 0; i < hitbox.length; i++) {
-            hitbox[i].x += origin.x;
-            hitbox[i].y += origin.y;
+        let hitbox = [];
+        for (let i = 0; i < this.hitbox.length; i++) {
+            hitbox = hitbox.concat({
+                x: this.hitbox[i].x + origin.x,
+                y: this.hitbox[i].y + origin.y,
+            });
         }
         return hitbox;
     }
