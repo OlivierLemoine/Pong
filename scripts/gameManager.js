@@ -15,10 +15,13 @@ class GameManager{
         var objs = this.mobiles.concat(this.statics);
         objs.forEach(o => {
             if(o !== mobile){
-                let selfPoints = o.getHitbox();
-                let mobilePoints = mobile.getHitbox();     
-                selfPoints = selfPoints.concat(selfPoints[0]);
+                let mobilePoints = mobile.getHitbox();
+
                 for(let j = 0; j < mobilePoints.length; j++){
+
+                    let selfPoints = o.getHitbox();
+                    selfPoints = selfPoints.concat(selfPoints[0]);
+                    
                     let isInside = true;
                     for (let i = 0; i < selfPoints.length - 1; i++) {
                         let d = {
