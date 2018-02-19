@@ -25,6 +25,26 @@ class Circle extends Mobile{
         return false;
     }
 
+    updateHitbox(){
+        let pos = this.getPosition();
+        let size = this.getSize();
+        let origin = this.getOrigin();
+
+        var points = [];
+        var point = {x: size.x / 2, y: 0};
+        var i = 5;
+        var rot = 2 * Math.PI / i;
+        while(i>0)
+        {
+            let tmp = cartesianToCircular(point);
+            tmp.t += rot * i;
+            points.push(circularToCartesian(tmp));
+            i -= 1;
+        }
+
+        return points;
+    }
+
     getHitbox(){
         var center = this.getPosition();
         var radius = this.getSize().x/2;
