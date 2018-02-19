@@ -15,6 +15,8 @@ class Shape{
             || typeof(rotation) != "number"
            ){
             throw new Error("Wrong input arguments");
+
+            this.hitbox = updateHitbox();
         }
 
         //Creation de l'element HTML <div> qui affichera une forme
@@ -68,6 +70,7 @@ class Shape{
     setRotation(rotation){
         var tmp = this.div.style.transform.split("rotate(" + this.getRotation());
         this.div.style.transform = "rotate(" + rotation + tmp[1];
+        this.hitbox = this.getHitbox();
     }
 
     getOrigin(){
@@ -85,42 +88,14 @@ class Shape{
         return this;
     }
     
-    getHitbox(){
-        throw new Error("This Methode is abstract");
-    }
-
-    collideWith(shape){
-
-        let selfPoints = this.getHitbox();
-        let shapePoints = shape.getHitbox();
-        selfPoints = selfPoints.concat(selfPoints[0]);
-
-
-        for(let j = 0; j < shapePoints.length; j++){
-            let isInside = true;
-            for (let i = 0; i < selfPoints.length - 1; i++) {
-                
-                let d = {
-                    x: selfPoints[i + 1].x - selfPoints[i].x,
-                    y: selfPoints[i + 1].y - selfPoints[i].y
-                };
-
-                let t = {
-                    x: shapePoints[j].x - selfPoints[i].x,
-                    y: shapePoints[j].y - selfPoints[i].y
-                };
-
-                let side = d.y * t.x - d.x * t.y;
-                
-                if(side < 0){
-                    isInside = false;
-                    break;
-                }
-            }
-            if(isInside)
-                return {res: true ,pos: shapePoints[j]};
-        };
-
-        return {res: false};
+    getHitbox(origin){
+        if(origin === undefined)
+            origin = this.getOrigin();
+        let moveableHitbox = this.hitbox;
+        for (let i = 0; i < moveableHitbox.length; i++) {
+            moveableHitbox[i].x += origin.x;
+            moveableHitbox[i].y += origin.y;
+        }
+        return moveableHitbox;
     }
 }

@@ -20,22 +20,14 @@ class Mobile extends Shape{
 
     }
 
-    move(mvt){
+    move(){
         let pos = this.getPosition();
         
-        if(mvt == undefined){    
-            pos.x += this.speed.x;
-            pos.y += this.speed.y;
-        }
-        else{
-            pos.x += mvt.x;
-            pos.y += mvt.y;
-        }
+        pos.x += this.speed.x;
+        pos.y += this.speed.y;
 
-
-        
         this.setPosition(pos);
-        
+
         return this;
     }
 

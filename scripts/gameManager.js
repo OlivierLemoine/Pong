@@ -6,30 +6,43 @@ class GameManager{
     }
 
     execute(){
-        this.collision();
         this.mobiles.forEach(m => {
+            this.collide(m);
             m.move();
         });
     }
-
-    collision(){
-        var obj = this.mobiles.concat(this.statics);
-        for(var i = 0; i < this.mobiles.length; i++){
-            for(var j = i + 1; j < obj.length; j++){
-
-                let c1 = obj[i].collideWith(obj[j]);
-
-                if(!c1.res){
-                    let c2 = obj[j].collideWith(obj[i]);
-                    if(c2.res)
-                        if(this.collisionHandler !== undefined)
-                            this.collisionHandler(obj[j], obj[i], c2.pos);
-                }
-                else if(this.collisionHandler !== undefined)
-                    this.collisionHandler(obj[i], obj[j], c1.pos);
-
+    collide(mobile){
+        var objs = this.mobiles.concat(this.statics);
+        objs.forEach(o => {
+            if(o !== mobile){
+                let selfPoints = this.getHitbox();
+                let mobilePoints = mobile.getHitbox();     
+                selfPoints = selfPoints.concat(selfPoints[0]);
+                for(let j = 0; j < shapePoints.length; j++){
+                    let isInside = true;
+                    for (let i = 0; i < selfPoints.length - 1; i++) {
+                        let d = {
+                            x: selfPoints[i + 1].x - selfPoints[i].x,
+                            y: selfPoints[i + 1].y - selfPoints[i].y
+                        };
+                        let t = {
+                            x: mobilePoints[j].x - selfPoints[i].x,
+                            y: mobilePoints[j].y - selfPoints[i].y
+                        };
+                        let side = d.y * t.x - d.x * t.y;               
+                        if(side < 0){
+                            isInside = false;
+                            break;
+                        }
+                    }
+                    if(isInside && this.collisionHandler !== undefined){
+                        this.collisionHandler(mobile, o);
+                        break;
+                    }
+                        
+                };      
             }
-        }
+        });
     }
 
     addStatic(s){
