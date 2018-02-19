@@ -24,6 +24,18 @@ class Triangle extends Mobile{
         this.div.style.borderBottomColor = color;
     }
 
+    getPosition(){
+
+        let size = this.getSize();
+
+        let pos = {
+            x: parseInt(this.div.style.left) - (size.x - 100) / 2,
+            y: parseInt(this.div.style.top) - (size.y - 100) / 2,
+        };
+
+        return pos;
+    }
+
     getSize(){
         let tmp = this.div.style.transform;
 
@@ -47,30 +59,25 @@ class Triangle extends Mobile{
         this.div.style.transformOrigin = "center";
     }
 
-    collideWith(points){
-        var pos = this.getPosition();
-        var size = this.getSize();
+    updateHitbox(){
+        let pos = this.getPosition();
+        let size = this.getSize();
+        let rot = this.getRotation();
 
-        points.forEach(point => {
-            if(pos.x <= point.x
-            && pos.x + size.x >= point.x
-            && pos.y <= point.y
-            && pos.y + size.y >= point.y){
-                return true;
-            }
-        });
+        rot = rot * 2 * Math.PI / 360;
 
-        return false;
-    }
+        let points = [
+            {x: 0, y: - size.y / 2},
+            {x: - size.x / 2, y: + size.y / 2},
+            {x: + size.x / 2, y: + size.y / 2},
+        ];
 
-    getHitbox(){
-        var pos = this.getPosition();
-        var size = this.getSize();
+        for (let i = 0; i < points.length; i++) {
+            let tmp = cartesianToCircular(points[i]);
+            tmp.t += rot;
+            points[i] = circularToCartesian(tmp);
+        }
 
-        return [
-            {x: pos.x, y: pos.y + size.y},
-            {x: pos.x + size.x, y: pos.y + size.y},
-            {x: pos.x + (size.x / 2), y: pos.y},
-        ]
+        return points;
     }
 }

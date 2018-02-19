@@ -12,7 +12,6 @@ class Rectangle extends Mobile{
         let pos = this.getPosition();
         let size = this.getSize();
         let rot = this.getRotation();
-        let origin = this.getOrigin();
 
         rot = rot * 2 * Math.PI / 360;
 

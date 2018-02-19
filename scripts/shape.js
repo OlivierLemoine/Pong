@@ -37,7 +37,7 @@ class Shape{
     }
 
     getSize(){
-        return {x: parseInt(this.div.style.width) ,y: parseInt(this.div.style.height)}
+        return {x: parseInt(this.div.style.width) ,y: parseInt(this.div.style.height)};
     }
 
     setSize(size){
@@ -46,7 +46,7 @@ class Shape{
     }
 
     getPosition(){
-        return {x: parseInt(this.div.style.left) ,y: parseInt(this.div.style.top)}
+        return {x: parseInt(this.div.style.left) ,y: parseInt(this.div.style.top)};
     }
 
     setPosition(position){
