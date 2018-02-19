@@ -8,7 +8,7 @@ class Rectangle extends Mobile{
         this.div.className = "rectangle";
     }
 
-    getHitbox(){
+    updateHitbox(){
         let pos = this.getPosition();
         let size = this.getSize();
         let rot = this.getRotation();
@@ -27,8 +27,6 @@ class Rectangle extends Mobile{
             let tmp = cartesianToCircular(points[i]);
             tmp.t += rot;
             points[i] = circularToCartesian(tmp);
-            points[i].x += origin.x;
-            points[i].y += origin.y;
         }
 
         return points;

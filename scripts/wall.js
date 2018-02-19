@@ -4,9 +4,11 @@ class Wall extends Shape{
     constructor(color, size, position, rotation = 0){
         
         super(color, size, position, rotation);
+
+        this.hitbox = this.updateHitbox();
     }
 
-    getHitbox(){
+    updateHitbox(){
         let pos = this.getPosition();
         let size = this.getSize();
         let rot = this.getRotation();
