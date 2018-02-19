@@ -4,8 +4,6 @@ class Wall extends Shape{
     constructor(color, size, position, rotation = 0){
         
         super(color, size, position, rotation);
-
-        this.hitbox = this.updateHitbox();
     }
 
     updateHitbox(){
