@@ -1,5 +1,5 @@
 var g = document.getElementsByClassName("gameContainer")[0];
-var gm = new GameManager((a, b, pos) => {
+var gm = new GameManager((a, b) => {
 
     let oA = a.getOrigin();
     let oB = b.getOrigin();
