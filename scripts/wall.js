@@ -25,8 +25,6 @@ class Wall extends Shape{
             let tmp = cartesianToCircular(points[i]);
             tmp.t += rot;
             points[i] = circularToCartesian(tmp);
-            points[i].x += origin.x;
-            points[i].y += origin.y;
         }
 
         return points;
