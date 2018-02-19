@@ -88,14 +88,13 @@ class Shape{
         return this;
     }
     
-    getHitbox(origin){
-        if(origin === undefined)
-            origin = this.getOrigin();
-        let moveableHitbox = this.hitbox;
-        for (let i = 0; i < moveableHitbox.length; i++) {
-            moveableHitbox[i].x += origin.x;
-            moveableHitbox[i].y += origin.y;
+    getHitbox(){
+        origin = this.getOrigin();
+        let hitbox = Object.assign([], this.hitbox);
+        for (let i = 0; i < hitbox.length; i++) {
+            hitbox[i].x += origin.x;
+            hitbox[i].y += origin.y;
         }
-        return moveableHitbox;
+        return hitbox;
     }
 }
