@@ -17,7 +17,7 @@ class GameManager{
             if(o !== mobile){
 
                 let mobilePoints = mobile.getHitbox();
-                 
+
                 let selfPoints = o.getHitbox();
                 selfPoints = selfPoints.concat(selfPoints[0]);
 
@@ -39,7 +39,7 @@ class GameManager{
                         }
                     }
                     if(isInside && this.collisionHandler !== undefined){
-                        this.collisionHandler(mobile, o);
+                        this.collisionHandler(mobile, o, mobilePoints[j]);
                         break;
                     }
                         
