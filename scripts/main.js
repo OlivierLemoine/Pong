@@ -14,7 +14,7 @@ var gm = new GameManager((a, b, point) => {
     vect.y /= magVect;
 
     if(a.speed !== undefined){
-        let rot = scalairproduct(vect,a.speed)/magnitude(a.speed);
+        let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
         rot = Math.acos(rot);
         let vectCircu = cartesianToCircular(a.speed);
         vectCircu.t += Math.PI - rot;
@@ -22,13 +22,14 @@ var gm = new GameManager((a, b, point) => {
     }
 
     if(b.speed !== undefined){
-        let rot = scalairproduct(vect,b.speed)/magnitude(b.speed);
+        let rot = scalairproduct(vect,b.speed)/(magVect*magnitude(b.speed));
         rot = Math.acos(rot);
         let vectCircu = cartesianToCircular(b.speed);
         vectCircu.t += Math.PI - rot;
         b.speed = circularToCartesian(vectCircu);
     }
 });
+
 gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 0, y: 0}).display(g));
 gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 0}).display(g));
 gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 1000, y: 0}).display(g));
