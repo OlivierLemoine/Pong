@@ -13,6 +13,11 @@ function circularToCartesian(point){
     return {x: x, y: y};
 };
 
+function scalairproduct(vecA,vecB)
+{
+    return vecA.x * vecB.x + vecA.y * vecB.y;
+}
+
 function magnitude(vec){
     return Math.sqrt(magnitudeSQ(vec));
 }
