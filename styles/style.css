@@ -7,6 +7,12 @@
 .gameContainer > div{
     position: absolute;
 }
+
+.buttons{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
 /* 
 body{
     transform-origin: 0 0;
