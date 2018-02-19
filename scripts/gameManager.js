@@ -1,8 +1,19 @@
 class GameManager{
-    constructor(collisionHandler){
+    constructor(x,y,collisionHandler){
         this.statics = [];
         this.mobiles = [];
         this.collisionHandler = collisionHandler;
+        this.xMax = x;
+        this.yMax = y;
+        var dy = y/10;
+        var dx = x/10;
+        for(var c = 0;c < 10;c++)
+        {
+            this.addStatic(new Wall("black", {x: 20, y: dy}, {x: 0, y: dy*c}).display(g));
+            this.addStatic(new Wall("black", {x: 20, y: dy}, {x: x, y: dy*c}).display(g));
+            this.addStatic(new Wall("black", {x: dx, y: 20}, {x: dx*c, y: 0}).display(g));
+            this.addStatic(new Wall("black", {x: dx, y: 20}, {x: dx*c, y: y}).display(g));
+        }
     }
 
     execute(){
