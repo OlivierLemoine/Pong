@@ -9,9 +9,10 @@ var gm = new GameManager((a, b, point) => {
         y: oB.y - oA.y
     };
 
-    let magVect = magnitude(vect)
+    var magVect = magnitude(vect)
     vect.x /= magVect;
     vect.y /= magVect;
+    magVect = magnitude(vect)
 
     if(a.speed !== undefined){
         let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
