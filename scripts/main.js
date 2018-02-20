@@ -53,12 +53,12 @@ function addShape(s){
         y: randInt(600) + 50,
     };
     let size = {
-        x: randInt(200) + 5,
-        y: randInt(200) + 5,
+        x: randInt(150) + 50,
+        y: randInt(150) + 50,
     };
     let vel = {
-        x: randInt(5),
-        y: randInt(5),
+        x: randInt(3),
+        y: randInt(3),
     };
     let rot = randInt(360);
 
