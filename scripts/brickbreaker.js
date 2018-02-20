@@ -1,4 +1,5 @@
 var g = document.getElementsByClassName("gameContainer")[0];
+var point = document.getElementById("point");
 var score = 0;
 var gm = new GameManager(1000, 1000, (a, b) => {
 
@@ -40,11 +41,14 @@ document.addEventListener('keydown', function(e) {
     if(e.key === "q"){
         gm.mobiles[0].move({x: -20, y: 0});
     }
-
 });
 
 function reload(){
     gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
     gm.addMobile(new Circle("green", 10, {x: 400, y: 1000}, 0,{x:1,y:0}).display(g));
     gm.launch();
+}
+function addPoint(nb){
+    let tmp = parseInt(point.innerHTML);
+    point.innerHTML = tmp + nb;
 }
