@@ -20,12 +20,6 @@ var gm = new GameManager(1000,1000,(a, b, point) => {
         let vectCircu = cartesianToCircular(a.speed);
         vectCircu.t += Math.PI - rot;
         a.speed = circularToCartesian(vectCircu);
-
-        // let vectCirc = cartesianToCircular(vect);
-        
-        // let tmp = cartesianToCircular(a.speed);
-        // tmp.t += (vectCirc.t + tmp.t);
-        // a.speed = circularToCartesian(tmp);
         a.move();
     }
     
@@ -35,12 +29,6 @@ var gm = new GameManager(1000,1000,(a, b, point) => {
         let vectCircu = cartesianToCircular(b.speed);
         vectCircu.t += Math.PI - rot;
         b.speed = circularToCartesian(vectCircu);
-
-        // let vectCirc = cartesianToCircular(vect);
-
-        // let tmp = cartesianToCircular(b.speed);
-        // tmp.t += (vectCirc.t - tmp.t);
-        // b.speed = circularToCartesian(tmp);
         b.move();
     }
 });
