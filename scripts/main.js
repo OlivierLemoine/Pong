@@ -15,32 +15,32 @@ var gm = new GameManager(1000,1000,(a, b, point) => {
     magVect = magnitude(vect)
 
     if(a.speed !== undefined){
-        // let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
-        // rot = Math.acos(rot);
-        // let vectCircu = cartesianToCircular(a.speed);
-        // vectCircu.t += Math.PI - rot;
-        // a.speed = circularToCartesian(vectCircu);
+        let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
+        rot = Math.acos(rot);
+        let vectCircu = cartesianToCircular(a.speed);
+        vectCircu.t += Math.PI - rot;
+        a.speed = circularToCartesian(vectCircu);
 
-        let vectCirc = cartesianToCircular(vect);
+        // let vectCirc = cartesianToCircular(vect);
         
-        let tmp = cartesianToCircular(a.speed);
-        tmp.t += (vectCirc.t + tmp.t);
-        a.speed = circularToCartesian(tmp);
+        // let tmp = cartesianToCircular(a.speed);
+        // tmp.t += (vectCirc.t + tmp.t);
+        // a.speed = circularToCartesian(tmp);
         a.move();
     }
     
     if(b.speed !== undefined){
-        // let rot = scalairproduct(vect,b.speed)/(magVect*magnitude(b.speed));
-        // rot = Math.acos(rot);
-        // let vectCircu = cartesianToCircular(b.speed);
-        // vectCircu.t += Math.PI - rot;
-        // b.speed = circularToCartesian(vectCircu);
+        let rot = scalairproduct(vect,b.speed)/(magVect*magnitude(b.speed));
+        rot = Math.acos(rot);
+        let vectCircu = cartesianToCircular(b.speed);
+        vectCircu.t += Math.PI - rot;
+        b.speed = circularToCartesian(vectCircu);
 
-        let vectCirc = cartesianToCircular(vect);
+        // let vectCirc = cartesianToCircular(vect);
 
-        let tmp = cartesianToCircular(b.speed);
-        tmp.t += (vectCirc.t - tmp.t);
-        b.speed = circularToCartesian(tmp);
+        // let tmp = cartesianToCircular(b.speed);
+        // tmp.t += (vectCirc.t - tmp.t);
+        // b.speed = circularToCartesian(tmp);
         b.move();
     }
 });
