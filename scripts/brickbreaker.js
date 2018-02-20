@@ -58,11 +58,11 @@ function reload(){
     gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
     gm.addMobile(new Circle("green", 30, {x: 500, y: 800}, 0,{x:0,y:1}).display(g));
     
-    for(var i = 0; i>3;i++)
+    for(var i = 0; i<3;i++)
     {
-        for(var j = 0; j>10;j++)
+        for(var j = 0; j<10;j++)
         {
-            gm.addStatic(new Wall("blue", {x: 100, y: 200}, {x: 100+j*10, y: 100+i*20}).display(g));
+            gm.addStatic(new Wall("blue", {x: 100, y: 200}, {x: 100+j*100, y: 100+i*200}).display(g));
         }
     }
 
