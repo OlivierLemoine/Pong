@@ -35,6 +35,15 @@ function random_rgba() {
     return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
 }
 
+function rebond(object,vector,magnitudeVector) {
+    let rot = scalairproduct(vector,object.speed)/(magnitudeVector*magnitude(object.speed));
+    rot = Math.acos(rot);
+    let vectCircu = cartesianToCircular(object.speed);
+    vectCircu.t += Math.PI - rot;
+    object.speed = circularToCartesian(vectCircu);
+    object.move();
+}
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
