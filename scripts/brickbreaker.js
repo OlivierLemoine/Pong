@@ -1,5 +1,5 @@
 var g = document.getElementsByClassName("gameContainer")[0];
-var gm = new GameManager((a, b) => {
+var gm = new GameManager(1000, 1000, (a, b) => {
 
     if(b.getColor() !== "black"){
         this.div.parentNode.removeChild(this.div);
@@ -7,11 +7,7 @@ var gm = new GameManager((a, b) => {
     }
     
 });
-gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 0, y: 0}).display(g));
-gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 0}).display(g));
-gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 1000, y: 0}).display(g));
-gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 1000}).display(g));
-gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 950}).display(g));
+gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
 gm.launch();
 
 
