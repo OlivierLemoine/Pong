@@ -14,11 +14,11 @@ gm.launch();
 document.addEventListener('keydown', function(e) {
 
     if(e.key === "d"){
-        gm.mobiles[0].move({x: 10, y: 0});
+        gm.mobiles[0].move({x: 20, y: 0});
     }
     
     if(e.key === "q"){
-        gm.mobiles[0].move({x: -10, y: 0});
+        gm.mobiles[0].move({x: -20, y: 0});
     }
 
 });

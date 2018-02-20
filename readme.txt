@@ -1,0 +1,1 @@
+Pour lancer, ouvrez un des trois fichier .html avec Internet Explorer (non c'est une blague).
