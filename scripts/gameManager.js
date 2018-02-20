@@ -20,6 +20,12 @@ class GameManager{
         this.mobiles.forEach(m => {
             this.collide(m);
             m.move();
+            var a = m.getOrigin();
+            if(a.x > this.xMax*1.1 || a.y > this.yMax*1.1)
+                {
+                    this.mobiles.splice(this.mobiles.indexOf(m));
+                    m.div.remove();
+                }
         });
     }
     collide(mobile){
