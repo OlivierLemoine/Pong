@@ -1,15 +1,36 @@
 var g = document.getElementsByClassName("gameContainer")[0];
+var score = 0;
 var gm = new GameManager(1000, 1000, (a, b) => {
 
-    if(b.getColor() !== "black"){
-        this.div.parentNode.removeChild(this.div);
-        gm.statics.splice(gm.statics.indexOf(this), 1);
+    if(b.getColor() !== "black" && b instanceof Wall){
+        b.div.parentNode.removeChild(b.div);
+        gm.statics.splice(gm.statics.indexOf(b), 1);
+        score += 10;
     }
-    
+    if(a.getColor() !== "black" && a instanceof Wall){
+        a.div.parentNode.removeChild(a.div);
+        gm.statics.splice(gm.statics.indexOf(b), 1);
+        score += 10;
+    }
+    let oA = a.getOrigin();
+    let oB = b.getOrigin();
+
+    let vect = {
+        x: oB.x - oA.x, 
+        y: oB.y - oA.y
+    };
+
+    var magVect = magnitude(vect)
+    vect.x /= magVect;
+    vect.y /= magVect;
+    magVect = magnitude(vect)
+
+    if(b.getColor() == "green"){rebond(b,vect,magVect)}
+    if(a.getColor() == "green"){rebond(a,vect,magVect)}
 });
 gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
+gm.addMobile(new Circle("green", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
 gm.launch();
-
 
 document.addEventListener('keydown', function(e) {
 
