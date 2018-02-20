@@ -17,6 +17,11 @@
 .buttonContainer > div{
     margin-top: 10px;
 }
+
+.buttonContainer > div > div{
+    background-color: white;
+    color: black;
+}
 /* 
 body{
     transform-origin: 0 0;
