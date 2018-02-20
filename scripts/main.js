@@ -48,6 +48,9 @@ function addShape(s){
         case 'circle':
             gm.addMobile(new Circle(color, size.x, pos, rot, vel).display(g));
             break;
+        case 'wall':
+            gm.addMobile(new Wall(color, size.x, pos, rot).display(g));
+            break;
     
         default:
             break;
