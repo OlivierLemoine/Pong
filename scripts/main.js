@@ -14,23 +14,9 @@ var gm = new GameManager(1000,1000,(a, b) => {
     vect.y /= magVect;
     magVect = magnitude(vect)
 
-    if(a.speed !== undefined){
-        let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
-        rot = Math.acos(rot);
-        let vectCircu = cartesianToCircular(a.speed);
-        vectCircu.t += Math.PI - rot;
-        a.speed = circularToCartesian(vectCircu);
-        a.move();
-    }
+    if(a.speed !== undefined){rebond(a,vect,magVect)}
     
-    if(b.speed !== undefined){
-        let rot = scalairproduct(vect,b.speed)/(magVect*magnitude(b.speed));
-        rot = Math.acos(rot);
-        let vectCircu = cartesianToCircular(b.speed);
-        vectCircu.t += Math.PI - rot;
-        b.speed = circularToCartesian(vectCircu);
-        b.move();
-    }
+    if(b.speed !== undefined){rebond(b,vect,magVect)}
 });
 
 gm.launch();
