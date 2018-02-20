@@ -15,19 +15,28 @@ var gm = new GameManager(1000,1000,(a, b, point) => {
     magVect = magnitude(vect)
 
     if(a.speed !== undefined){
-        let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
-        rot = Math.acos(rot);
-        let vectCircu = cartesianToCircular(a.speed);
-        vectCircu.t += Math.PI - rot;
-        a.speed = circularToCartesian(vectCircu);
-    }
+        // let rot = scalairproduct(vect,a.speed)/(magVect*magnitude(a.speed));
+        // rot = Math.acos(rot);
+        // let vectCircu = cartesianToCircular(a.speed);
+        // vectCircu.t += Math.PI - rot;
+        // a.speed = circularToCartesian(vectCircu);
 
+        let tmp = cartesianToCircular(a.speed);
+        tmp.t += Math.PI;
+        a.speed = circularToCartesian(tmp);
+        a.move();
+    }
+    
     if(b.speed !== undefined){
-        let rot = scalairproduct(vect,b.speed)/(magVect*magnitude(b.speed));
-        rot = Math.acos(rot);
-        let vectCircu = cartesianToCircular(b.speed);
-        vectCircu.t += Math.PI - rot;
-        b.speed = circularToCartesian(vectCircu);
+        // let rot = scalairproduct(vect,b.speed)/(magVect*magnitude(b.speed));
+        // rot = Math.acos(rot);
+        // let vectCircu = cartesianToCircular(b.speed);
+        // vectCircu.t += Math.PI - rot;
+        // b.speed = circularToCartesian(vectCircu);
+        let tmp = cartesianToCircular(b.speed);
+        tmp.t += Math.PI;
+        b.speed = circularToCartesian(tmp);
+        b.move();
     }
 });
 
@@ -35,6 +44,7 @@ var gm = new GameManager(1000,1000,(a, b, point) => {
 //gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 0}).display(g));
 //gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 1000, y: 0}).display(g));
 //gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 1000}).display(g));
-gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 100, y: 100}, 0, {x: 0, y: 2}).display(g));
+gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 30, y: 30}, 0, {x: 5, y: 6}).display(g));
+gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 500, y: 30}, 0, {x: 0, y: 6}).display(g));
 
 gm.launch();
