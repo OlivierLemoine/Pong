@@ -17,6 +17,11 @@ var gm = new GameManager(1000, 1000, (a, b) => {
     
     if(a.speed !== undefined){rebond(a,vect,magVect);}
     if(b.speed !== undefined){rebond(b,vect,magVect);}
+    else{
+        if(a.getPosition().y > 1060){
+            gm.stop();
+        }
+    }
 
     if(b.getColor() !== "black" && b instanceof Wall){
         b.div.parentNode.removeChild(b.div);
@@ -42,7 +47,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
-gm.addMobile(new Circle("green", 30, {x: 500, y: 800}, 0,{x:0,y:1}).display(g));
+gm.addMobile(new Circle("green", 30, {x: 500, y: 800}, 0,{x:0,y:4}).display(g));
 
 for(var i = 0; i<3;i++)
 {
