@@ -11,7 +11,14 @@
     <body>
         <!-- <canvas id="canv" style="width: 500px; height: 500px"></canvas> -->
         <div class="gameContainer"></div>
-        <button onclick="window.location.href='./brickbreaker.html'" class="buttons">Brick breaker</button>
+        <div class="buttonContainer">
+            <button onclick="window.location.href='./brickbreaker.html'" class="buttons">Brick breaker</button>
+            <div>
+                <button onclick="addShape('rectangle')" class="buttons">Add Rectangle</button>
+                <button onclick="addShape('triangle')" class="buttons">Add Triangle</button>
+                <button onclick="addShape('circle')" class="buttons">Add Circle</button>
+            </div>
+        </div>
 
         <script src="./scripts/utils.js"></script>
         <script src="./scripts/shape.js"></script>

@@ -45,11 +45,56 @@ var gm = new GameManager(1000,1000,(a, b, point) => {
     }
 });
 
-//gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 0, y: 0}).display(g));
-//gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 0}).display(g));
-//gm.addStatic(new Wall("black", {x: 20, y: 1000}, {x: 1000, y: 0}).display(g));
-//gm.addStatic(new Wall("black", {x: 1000, y: 20}, {x: 0, y: 1000}).display(g));
-gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 30, y: 30}, 0, {x: 5, y: 6}).display(g));
-gm.addMobile(new Rectangle("green", {x: 100, y: 100}, {x: 500, y: 30}, 0, {x: 0, y: 6}).display(g));
-
 gm.launch();
+
+function addShape(s){
+    let pos = {
+        x: randInt(600) + 50,
+        y: randInt(600) + 50,
+    };
+    let size = {
+        x: randInt(200) + 5,
+        y: randInt(200) + 5,
+    };
+    let vel = {
+        x: randInt(5),
+        y: randInt(5),
+    };
+    let rot = randInt(360);
+
+    let color = getRandomColor();
+
+    switch (s) {
+        case 'rectangle':
+            gm.addMobile(new Rectangle(color, size, pos, rot, vel).display(g));
+            break;
+        case 'triangle':
+            gm.addMobile(new Triangle(color, size, pos, rot, vel).display(g));
+            break;
+        case 'circle':
+            gm.addMobile(new Circle(color, size.x, pos, rot, vel).display(g));
+            break;
+    
+        default:
+            break;
+    }
+
+}
+
+function randInt(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+}
+
+function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }

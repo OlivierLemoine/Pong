@@ -14,6 +14,18 @@ class Triangle extends Mobile{
         this.div.style.borderBottomColor = color;
         this.div.style.backgroundColor = null;
 
+        this.setPosition = (pos) => {
+            let size = this.getSize();
+    
+            let position = {
+                x: pos.x + (size.x - 100) / 2,
+                y: pos.y + (size.y - 100) / 2,
+            }
+    
+            this.div.style.left = position.x + "px";
+            this.div.style.top = position.y + "px";
+        }
+
     }
 
     getColor(){
