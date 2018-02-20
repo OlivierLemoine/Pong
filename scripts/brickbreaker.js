@@ -53,7 +53,7 @@ for(var i = 0; i<3;i++)
 {
     for(var j = 0; j<10;j++)
     {
-        gm.addStatic(new Wall("blue", {x: 80, y: 20}, {x: 50+j*100, y: 50+i*200}).display(g));
+        gm.addStatic(new Wall("blue", {x: 80, y: 40}, {x: 50+j*100, y: 50+i*200}).display(g));
     }
 }
 
