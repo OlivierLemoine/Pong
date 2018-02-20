@@ -1,17 +1,16 @@
 var g = document.getElementsByClassName("gameContainer")[0];
 var point = document.getElementById("point");
-var score = 0;
 var gm = new GameManager(1000, 1000, (a, b) => {
 
     if(b.getColor() !== "black" && b instanceof Wall){
         b.div.parentNode.removeChild(b.div);
         gm.statics.splice(gm.statics.indexOf(b), 1);
-        score += 10;
+        addPoint(10);
     }
     if(a.getColor() !== "black" && a instanceof Wall){
         a.div.parentNode.removeChild(a.div);
         gm.statics.splice(gm.statics.indexOf(b), 1);
-        score += 10;
+        addPoint(10);
     }
     let oA = a.getOrigin();
     let oB = b.getOrigin();
@@ -30,7 +29,7 @@ var gm = new GameManager(1000, 1000, (a, b) => {
     if(a.getColor() == "green"){rebond(a,vect,magVect)}
 });
 
-gm.launch();
+reload();
 
 document.addEventListener('keydown', function(e) {
 
@@ -44,8 +43,29 @@ document.addEventListener('keydown', function(e) {
 });
 
 function reload(){
+    gm.mobiles.forEach(element => {
+        element.div.parentNode.removeChild(element.div);
+        gm.statics.splice(gm.statics.indexOf(element), 1);
+    });
+    gm.mobiles = [];
+    gm.statics.forEach(element => {
+        if(element !== "black")
+        {
+            element.div.parentNode.removeChild(element.div);
+            gm.statics.splice(gm.statics.indexOf(element), 1);
+        }
+    });
     gm.addMobile(new Rectangle("red", {x: 200, y: 20}, {x: 400, y: 1000}).display(g));
-    gm.addMobile(new Circle("green", 10, {x: 400, y: 1000}, 0,{x:1,y:0}).display(g));
+    gm.addMobile(new Circle("green", 30, {x: 500, y: 800}, 0,{x:0,y:1}).display(g));
+    
+    for(var i = 0; i>3;i++)
+    {
+        for(var j = 0; j>10;j++)
+        {
+            gm.addStatic(new Wall("blue", {x: 100, y: 200}, {x: 100+j*10, y: 100+i*20}).display(g));
+        }
+    }
+
     gm.launch();
 }
 function addPoint(nb){
